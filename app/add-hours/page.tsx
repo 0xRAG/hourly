@@ -87,7 +87,7 @@ export default function AddHoursPage() {
   }
 
   return (
-    <AppLayout title="Add Hours" showLogout={true}>
+    <AppLayout showLogout={true}>
       <div className="form-container">
         <form onSubmit={handleSubmit} className="hour-form">
           <div className="form-header">

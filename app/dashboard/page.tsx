@@ -58,7 +58,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <AppLayout title="Dashboard">
+      <AppLayout>
         <div className="loading">Loading your hours...</div>
       </AppLayout>
     );
@@ -66,7 +66,7 @@ export default function DashboardPage() {
 
   if (error) {
     return (
-      <AppLayout title="Dashboard">
+      <AppLayout>
         <div className="error-message">{error}</div>
       </AppLayout>
     );
@@ -74,7 +74,7 @@ export default function DashboardPage() {
 
   if (!data) {
     return (
-      <AppLayout title="Dashboard">
+      <AppLayout>
         <div className="error-message">No data available</div>
       </AppLayout>
     );
@@ -83,7 +83,7 @@ export default function DashboardPage() {
   const recentEntries = data.entries.slice(0, 10); // Show last 10 entries
 
   return (
-    <AppLayout title="Dashboard" showLogout={true}>
+    <AppLayout showLogout={true}>
       <div className="dashboard">
         <div className="progress-section">
           <div className="dual-progress">

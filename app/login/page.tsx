@@ -53,7 +53,7 @@ export default function LoginPage() {
   }
 
   return (
-    <AppLayout title="Login">
+    <AppLayout>
       <div className="auth-container">
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="auth-header">
