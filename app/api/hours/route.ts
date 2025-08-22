@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCurrentUser } from '@/app/lib/session'
 import { prisma } from '@/app/lib/prisma'
+import { HourEntry } from '@prisma/client'
 
 export async function GET(request: NextRequest) {
   try {
@@ -19,11 +20,11 @@ export async function GET(request: NextRequest) {
     })
 
     const directDbqHours = hourEntries
-      .filter(entry => entry.type === 'Direct' || entry.type === 'DBQ')
+      .filter((entry: HourEntry) => entry.type === 'Direct' || entry.type === 'DBQ')
       .reduce((sum, entry) => sum + entry.hours, 0)
     
     const supervisionHours = hourEntries
-      .filter(entry => entry.type === 'Supervision')
+      .filter((entry: HourEntry) => entry.type === 'Supervision')
       .reduce((sum, entry) => sum + entry.hours, 0)
 
     const totalHours = hourEntries.reduce((sum, entry) => sum + entry.hours, 0)
