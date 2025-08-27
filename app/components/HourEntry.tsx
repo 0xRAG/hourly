@@ -1,7 +1,7 @@
 interface HourEntryProps {
   date: string
   hours: number
-  type: 'DBQ' | 'Supervision' | 'Direct'
+  type: 'DBQ' | 'Supervision' | 'Direct' | 'Consultation'
   clientInitials?: string
 }
 
@@ -23,6 +23,8 @@ export default function HourEntry({ date, hours, type, clientInitials }: HourEnt
         return '#f59e0b' // amber
       case 'Direct':
         return '#10b981' // green
+      case 'Consultation':
+        return '#8b5cf6' // purple
       default:
         return '#6b7280' // gray
     }

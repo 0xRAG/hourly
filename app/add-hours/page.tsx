@@ -9,7 +9,8 @@ import FormSelect from '@/app/components/FormSelect'
 const hourTypeOptions = [
   { value: 'DBQ', label: 'DBQ' },
   { value: 'Supervision', label: 'Supervision' },
-  { value: 'Direct', label: 'Direct' }
+  { value: 'Direct', label: 'Direct' },
+  { value: 'Consultation', label: 'Consultation' }
 ]
 
 export default function AddHoursPage() {
