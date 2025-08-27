@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!['DBQ', 'Supervision', 'Direct'].includes(type)) {
+    if (!['DBQ', 'Supervision', 'Direct', 'Consultation'].includes(type)) {
       return NextResponse.json(
         { error: 'Invalid hour type' },
         { status: 400 }

@@ -11,7 +11,7 @@ interface HourEntryData {
   id: string;
   date: string;
   hours: number;
-  type: "DBQ" | "Supervision" | "Direct";
+  type: "DBQ" | "Supervision" | "Direct" | "Consultation";
   clientInitials?: string;
 }
 
@@ -53,6 +53,28 @@ export default function DashboardPage() {
       setError("Failed to load dashboard data");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDeleteEntry = async (entryId: string) => {
+    try {
+      const response = await fetch(`/api/hours/${entryId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.status === 401) {
+        router.push("/login");
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error("Failed to delete entry");
+      }
+
+      // Refresh the data after successful deletion
+      await fetchData();
+    } catch (error) {
+      setError("Failed to delete entry");
     }
   };
 
@@ -153,10 +175,12 @@ export default function DashboardPage() {
               {recentEntries.map((entry) => (
                 <HourEntry
                   key={entry.id}
+                  id={entry.id}
                   date={entry.date}
                   hours={entry.hours}
                   type={entry.type}
                   clientInitials={entry.clientInitials}
+                  onDelete={handleDeleteEntry}
                 />
               ))}
             </div>
