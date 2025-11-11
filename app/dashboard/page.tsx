@@ -162,7 +162,14 @@ export default function DashboardPage() {
         </div>
 
         <div className="entries-section">
-          <h3>Recent Entries</h3>
+          <div className="entries-header">
+            <h3>Recent Entries</h3>
+            {data.entries.length > 0 && (
+              <Link href="/entries" className="view-all-link">
+                View all
+              </Link>
+            )}
+          </div>
           {recentEntries.length === 0 ? (
             <div className="no-entries">
               <p>No hour entries yet.</p>
