@@ -10,10 +10,12 @@ interface HourEntryProps {
 export default function HourEntry({ id, date, hours, type, clientInitials, onDelete }: HourEntryProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
+    // Use UTC to avoid timezone shifts
     return date.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
-      year: 'numeric'
+      year: 'numeric',
+      timeZone: 'UTC'
     })
   }
 

@@ -81,9 +81,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Parse date as local date to avoid timezone issues
+    // When date is "2024-11-10", we want it to stay Nov 10 regardless of timezone
+    const dateObj = new Date(date + 'T12:00:00')
+
     const hourEntry = await prisma.hourEntry.create({
       data: {
-        date: new Date(date),
+        date: dateObj,
         hours,
         type,
         clientInitials: clientInitials || null,
