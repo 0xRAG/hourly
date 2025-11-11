@@ -6,6 +6,7 @@ import Link from "next/link";
 import AppLayout from "@/app/components/AppLayout";
 import ProgressCircle from "@/app/components/ProgressCircle";
 import HourEntry from "@/app/components/HourEntry";
+import NotificationSettings from "@/app/components/NotificationSettings";
 
 interface HourEntryData {
   id: string;
@@ -154,6 +155,8 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+
+        <NotificationSettings />
 
         <div className="actions-section">
           <Link href="/add-hours" className="add-hours-btn">
